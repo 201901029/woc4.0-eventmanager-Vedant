@@ -1,6 +1,5 @@
 #First write your routine inside the Daily Routine file and then execute this program
 #This program will notify you according to your routine
-from operator import truediv
 
 
 def check(s1,s2):   #Checking whether current time is less than or equal to the time of the task scheduled 
