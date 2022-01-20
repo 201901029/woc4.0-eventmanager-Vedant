@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Registration</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #1e272e;
+      }
+
+      h1 {
+        color: white;
+        padding: 25px 30px;
+        background-color: crimson;
+      }
+
+      .nav-list {
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-list li {
+        list-style: none;
+        padding: 25px 30px;
+        color: black;
+      }
+
+      .nav-list li a {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.6px 3.2rem;
+        color: white;
+        border: 1px solid black;
+      }
+
+      .nav-list li a:hover {
+        color: black;
+      }
+
+      .main {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 align="center">EVENT REGISTRATION</h1>
+    <nav class="navbar">
+      <ul class="nav-list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/event_registration">Event Registration</a></li>
+        <li>
+          <a href="/participant_registration">Participant Registration</a>
+        </li>
+        <li><a href="#home">Event Dashboard</a></li>
+      </ul>
+    </nav>
+    <div class="form-group">
+      <form action="" method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <input type="submit" value="submit" class="btn btn-success" />
+      </form>
+    </div>
+  </body>
+</html>

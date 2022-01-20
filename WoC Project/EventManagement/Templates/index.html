@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+    	* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #1e272e;
+}
+
+h1 {
+  color: white;
+  padding: 25px 30px;
+  background-color: crimson;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list li {
+  list-style: none;
+  padding: 25px 30px;
+  color: black;
+}
+
+.nav-list li a {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.6px 3.2rem;
+  color: white;
+  border: 1px solid black;
+}
+
+.nav-list li a:hover {
+  color: black;
+}
+.slider_image {
+  width: 100%;
+  height: 400px;
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  transform: translate(-50%, -50%);
+  background-image: url("{% static 'image-1.jpg' %}");
+  background-size: 100% 100%;
+  animation: slider 15s infinite linear;
+}
+
+@keyframes slider {
+  0% {
+    background-image: url("{% static 'image-1.jpg' %}");
+    background-size: 100% 100%;
+  }
+  35% {
+    background-image: url("{% static 'image-2.jpg' %}");
+    background-size: 100% 100%;
+  }
+  75% {
+    background-image: url("{% static 'image-3.jpg' %}");
+    background-size: 100% 100%;
+  }
+}
+.main {
+  display: flex;
+}
+.about_us {
+  padding-top: 450px;
+  padding-left: 80px;
+  padding-right: 700px;
+  color: white;
+}
+
+.temp {
+  border: 1px solid black;
+}
+
+.Contact_us {
+  padding-top: 0px;
+  padding-left: 700px;
+  padding-right: 100px;
+  color: white;
+}
+
+.temp1 {
+  border: 1px solid black;
+}
+
+.Feedback {
+  padding-top: 0px;
+  padding-left: 80px;
+  padding-right: 700px;
+  color: white;
+}
+textarea {
+  background-color: white;
+}
+.temp2 {
+  border: 1px solid black;
+}
+
+    </style>
+    <title>Event Management System</title>
+  </head>
+  <body>
+    <h1 align="center">EVENT MANAGEMENT SYSTEM</h1>
+    <nav class="navbar">
+      <ul class="nav-list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/event_registration">Event Registration</a></li>
+        <li><a href="/participant_registration">Participant Registration</a></li>
+        <li><a href="#home">Event Dashboard</a></li>
+      </ul>
+    </nav>
+    <div class="slider_image"></div>
+    <section class="about_us">
+      <div class="temp">
+        <h2 align="center">ABOUT</h2>
+        <p align="left">
+          Wr are an event management company which manages all the types of
+          events such as wedding events,sports events,corporate events, parties
+          and many more.For the convenience of our customers we have created a
+          website which is completely user friendly. This website helps the user
+          to organize any event . Also the people who want to attend any event
+          can register for that event using this website. And the person could
+          also keep track of all the events he is currently registered.
+        </p>
+      </div>
+    </section>
+    <section class="Contact_us">
+      <div class="temp1">
+        <h2 align="center">CONTACT US</h4>
+        <h4 align="left">Phone No: +91 9408234965</h3>
+        <h4 align="left">Phone No: +91 8128675002</h4>
+        <h4 align="left">Email: vedantparikh740@gmail.com</h4>
+        <h4 align="left">
+          Address: 18, Uma Society Near Sangam Bus Stop Harni Road Vadodara
+        </h3>
+        <h3 align="left">Please feel free to contact us.</h3>
+      </div>
+    </section>
+    <section class="Feedback">
+      <div class="temp2">
+        <h2 align="center">FEEDBACK</h2>
+        <h4 align=center>Your Feedback is very valuable for us.</h4>
+        <form>
+          <textarea rows="4" cols="50"></textarea>
+          <input type="submit" value="SEND" style="background-color:grey;color:white;">
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

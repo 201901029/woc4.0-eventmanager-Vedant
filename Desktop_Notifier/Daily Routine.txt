@@ -1,0 +1,12 @@
+8:00:00 Do Brush
+9:00:00 Please take bath
+10:03:00 Eat breakfast
+12:00:00 Eat Lunch
+14:00:00 Take a Nap
+16:00:00 Study for Some time
+17:00:00 Play for Sometime
+19:00:00 Again Study
+20:00:00 Eat Dinner
+20:30:00 Watch TMKOC
+21:00:00 Take Medicine
+22:00:00 Go to Sleep
