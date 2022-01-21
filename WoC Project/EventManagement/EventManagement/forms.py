@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from EventManagement.models import Event
-
+from EventManagement.models import Participant
 
 class EventForm(ModelForm):
     class Meta:
@@ -17,3 +17,15 @@ class EventForm(ModelForm):
           "Registration_Deadline":forms.TextInput(attrs={'class':'form-control','placeholder':'Registration Deadline(DD/MM/YYYY HH:MM:SS)'}),
           "Host_Email":forms.TextInput(attrs={'class':'form-control','placeholder':'Host Email'},),
         }
+  
+class ParticipantForm(ModelForm):
+    class Meta:
+        model=Participant
+        fields=("name","Contact_no","Email_ID","Event_name")
+        widgets={
+          "name": forms.TextInput(attrs={'class':'form-control','placeholder':'Name'}),
+          "Contact_no": forms.TextInput(attrs={'class':'form-control','placeholder':'Contact_no'}),
+          "Email_ID": forms.TextInput(attrs={'class':'form-control','placeholder':'Email_ID'}),
+          "Event_name": forms.TextInput(attrs={'class':'form-control','placeholder':'Event_name'}),
+        }
+  

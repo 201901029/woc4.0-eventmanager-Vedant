@@ -16,7 +16,7 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        background-color: white;
+        background-color: #1e272e;
       }
 
       h1 {
@@ -47,7 +47,14 @@
       .nav-list li a:hover {
         color: black;
       }
-
+      .container1 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .container1 ul {
+        color: white;
+      }
       .main {
         display: flex;
       }
@@ -66,18 +73,26 @@
         <li><a href="#home">Event Dashboard</a></li>
       </ul>
     </nav>
-    {% for event in list %}
-    <ul>
-      {{event.name}}
-      <li>{{event.email}}</li>
-      <li>{{event.address}}</li>
-      <li>{{event.desc}}</li>
-      <li>{{event.From}}</li>
-      <li>{{event.To}}</li>
-      <li>{{event.Registration_Deadline}}</li>
-      <li>{{event.Host_Email}}</li>
-    </ul>
+    <div class="container1">
+      {% for event in list %}
+      <ul>
+        {{event.name}}
+        <li><b>Email : </b>{{event.email}}</li>
+        <li><b>Address :</b>{{event.address}}</li>
+        <li><b>Description :</b>{{event.desc}}</li>
+        <li><b>From :</b>{{event.From}}</li>
+        <li><b>To :</b>{{event.To}}</li>
+        <li><b>Registration Deadline :</b>{{event.Registration_Deadline}}</li>
+        <li><b>Host Email :</b>{{event.Host_Email}}</li>
+      </ul>
 
-    {% endfor %}
+      {% endfor %}
+    </div>
+    <div class="form-group">
+      <form action="" method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <input type="submit" value="submit" class="btn btn-success" />
+      </form>
+    </div>
   </body>
 </html>
