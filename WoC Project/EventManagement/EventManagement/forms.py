@@ -21,11 +21,11 @@ class EventForm(ModelForm):
 class ParticipantForm(ModelForm):
     class Meta:
         model=Participant
-        fields=("name","Contact_no","Email_ID","Event_name")
+        fields=("name","Contact_no","Email_ID","Event_name","Registration_Type","No_of_people")
         widgets={
           "name": forms.TextInput(attrs={'class':'form-control','placeholder':'Name'}),
           "Contact_no": forms.TextInput(attrs={'class':'form-control','placeholder':'Contact_no'}),
           "Email_ID": forms.TextInput(attrs={'class':'form-control','placeholder':'Email_ID'}),
-          "Event_name": forms.TextInput(attrs={'class':'form-control','placeholder':'Event_name'}),
+          "Registration_Type": forms.RadioSelect()
         }
   

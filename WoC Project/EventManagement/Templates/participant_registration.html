@@ -11,12 +11,18 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
     <style>
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         background-color: #1e272e;
+        color: white;
       }
 
       h1 {
@@ -60,7 +66,18 @@
       }
     </style>
   </head>
-
+  <script>
+    $(function () {
+      $("#id_Registration_Type_1").on("click", function () {
+        $('#id_No_of_people,label[for="id_No_of_people"]').show();
+      });
+    });
+    $(function () {
+      $("#id_Registration_Type_2").on("click", function () {
+        $('#id_No_of_people,label[for="id_No_of_people"]').hide();
+      });
+    });
+  </script>
   <body>
     <h1 align="center">PARTICIPANT REGISTRATION</h1>
     <nav class="navbar">
