@@ -18,28 +18,28 @@ def event_registration(request):
     if request.method=="POST":
         form=EventForm(request.POST)    
         if form.is_valid():
-            thanks="Thankyou for registering an event"
-            name=request.POST['name']
-            email=request.POST['email']
-            desc=request.POST['desc']
-            From=request.POST['To']
-            To=request.POST['From']
-            Registration_Deadline=request.POST['Registration_Deadline']
-            message = "%s\n Name: %s\n Email: %s\n Description: %s\n From: %s\n To: %s\n Registration_Deadline: %s\n" % (
-                    thanks,
-                    name , 
-                    email,
-                    desc,
-                    From,
-                    To,
-                    Registration_Deadline)
-            form.save()
-            send_mail(
-                'Test',
-                message,
-                'vedantparikh421@gmail.com',
-                [email]
-            )
+           # thanks="Thankyou for registering an event"
+           # name=request.POST['name']
+           #email=request.POST['email']
+           # desc=request.POST['desc']
+           # From=request.POST['To']
+           # To=request.POST['From']
+           # Registration_Deadline=request.POST['Registration_Deadline']
+           # message = "%s\n Name: %s\n Email: %s\n Description: %s\n From: %s\n To: %s\n Registration_Deadline: %s\n" % (
+            #        thanks,
+             #       name , 
+              #      email,
+               #     desc,
+              #      From,
+             #       To,
+             #       Registration_Deadline)
+            #form.save()
+            #send_mail(
+             #   'Test',
+              #  message,
+              #  'vedantparikh421@gmail.com',
+              #  [email]
+            #)
             return HttpResponseRedirect('/event_registration')
     else:
         form=EventForm
@@ -76,12 +76,10 @@ def participant_registration(request):
         if flag==1:
             messages.error(request,"This email ID already exists")
             return HttpResponseRedirect('/participant_registration')
-
         participant.save()
 
-
-            #account_sid = 'AC5e7957d055a49d897da005172a5a9b60'
-            #auth_token ='bdf62192a911a9c66840e8ff7863d295'
+            #account_sid = ''
+            #auth_token =''
             #client = Client(account_sid, auth_token)
             #name=request.POST['name']
             #Contact_no=str(request.POST['Contact_no'])
@@ -94,7 +92,7 @@ def participant_registration(request):
                     #Event_name)
             #message = client.messages.create(
                               #body=message,
-                              #from_='+16066033405',
+                              #from_='',
                               #to=Contact_no
                           #)
             #print(message.sid)
