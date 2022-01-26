@@ -12,7 +12,6 @@ class Event(models.Model):
   From=models.DateTimeField(blank=True)
   To=models.DateTimeField(blank=True)
   Registration_Deadline=models.DateTimeField(blank=True)
-  Host_Email=models.EmailField(blank=True)
 
 temp=(('Group','Group'),
       ('Individual','Individual')
@@ -24,4 +23,4 @@ class Participant(models.Model):
   Email_ID=models.EmailField(blank=True)
   Event_name=models.CharField(max_length=32,blank=True)
   Registration_Type=models.CharField(max_length=32,blank=True,choices=temp)
-  No_of_people=models.IntegerField(blank=True)
+  No_of_people=models.IntegerField(default='1')
