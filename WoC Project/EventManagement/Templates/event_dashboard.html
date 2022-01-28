@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Paticipant Registration</title>
+    <title>Event Dashboard</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -74,22 +74,21 @@
       .main {
         display: flex;
       }
+      .form-group {
+        padding: 16px 32rem;
+      }
+
+      table,
+      th,
+      td {
+        border: 5px solid black;
+        border-collapse: collapse;
+      }
     </style>
   </head>
-  <script>
-    $(function () {
-      $("#id_Registration_Type_1").on("click", function () {
-        $('#id_No_of_people,label[for="id_No_of_people"]').show();
-      });
-    });
-    $(function () {
-      $("#id_Registration_Type_2").on("click", function () {
-        $('#id_No_of_people,label[for="id_No_of_people"]').hide();
-      });
-    });
-  </script>
+
   <body>
-    <h1 align="center">PARTICIPANT REGISTRATION</h1>
+    <h1 align="center">EVENT DASHBOARD</h1>
     <nav class="navbar">
       <ul class="nav-list">
         <li><a href="/">Home</a></li>
@@ -100,45 +99,38 @@
         <li><a href="/event_dashboard">Event Dashboard</a></li>
       </ul>
     </nav>
-    {% for message in messages %}
-    <div
-      class="alert alert-{{message.tags}} alert-dismissible fade show"
-      role="alert"
-    >
-      Message: {{message}}
-      <button
-        type="button"
-        class="close"
-        data-dismiss="alert"
-        aria-label="Close"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    {% endfor %}
-    <div class="container1">
-      {% for event in list %}
-      <ul>
-        {{event.name}}
-        <li><b>Email : </b>{{event.email}}</li>
-        <li><b>Address :</b>{{event.address}}</li>
-        <li><b>Description :</b>{{event.desc}}</li>
-        <li><b>From :</b>{{event.From}}</li>
-        <li><b>To :</b>{{event.To}}</li>
-        <li><b>Registration Deadline :</b>{{event.Registration_Deadline}}</li>
-      </ul>
-
-      {% endfor %}
-    </div>
+    {% if success %}
     <div class="form-group">
       <form action="" method="POST">
-        {% csrf_token %} {{ form.as_p }} Event Name : -{% for event in list %}
-        <label>{{event.name}}</label>
-        <input type="radio" name="Event_name" value="{{event.name}}" />
+        {% csrf_token %} {{ form.as_p }}
+        <input type="submit" value="submit" class="btn btn-success" />
+      </form>
+      <br />
+      <br />
+      <table>
+        <th>Name</th>
+        <th>Contact No</th>
+        <th>Email ID</th>
+        <th>Registration Type</th>
+        <th>No of people</th>
+        {% for item in list %}
+        <tr>
+          <td>{{item.name}}</td>
+          <td>{{item.Contact_no}}</td>
+          <td>{{item.Email_ID}}</td>
+          <td>{{item.Registration_Type}}</td>
+          <td>{{item.No_of_people}}</td>
+        </tr>
         {% endfor %}
-        <br />
+      </table>
+    </div>
+    {% else %}
+    <div class="form-group">
+      <form action="" method="POST">
+        {% csrf_token %} {{ form.as_p }}
         <input type="submit" value="submit" class="btn btn-success" />
       </form>
     </div>
+    {% endif %}
   </body>
 </html>

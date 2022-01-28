@@ -66,6 +66,22 @@
         <li><a href="#home">Event Dashboard</a></li>
       </ul>
     </nav>
+    {% for message in messages %}
+    <div
+      class="alert alert-{{message.tags}} alert-dismissible fade show"
+      role="alert"
+    >
+      Message: {{message}}
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
     <div class="form-group">
       <form action="" method="POST">
         {% csrf_token %} {{ form.as_p }}

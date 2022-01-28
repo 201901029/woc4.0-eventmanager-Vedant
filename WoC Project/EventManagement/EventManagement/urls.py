@@ -21,5 +21,6 @@ urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
     path('', views.index,name='index'),
     path('event_registration',views.event_registration,name='event_registration'),
-    path('participant_registration',views.participant_registration,name='participant_registration')
+    path('participant_registration',views.participant_registration,name='participant_registration'),
+    path('event_dashboard',views.event_dashboard,name='event_dashboard')
 ]

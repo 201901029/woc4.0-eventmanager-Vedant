@@ -9,6 +9,7 @@ from .forms import EventForm
 from .models import Event
 from .forms import ParticipantForm
 from .models import Participant
+from .forms  import EventDashboardform
 import datetime
 def index(request):
     context = {'name':'Vedant'}
@@ -33,16 +34,20 @@ def event_registration(request):
               #      From,
              #       To,
              #       Registration_Deadline)
-            #form.save()
+            form.save()
             #send_mail(
              #   'Test',
               #  message,
               #  'vedantparikh421@gmail.com',
               #  [email]
             #)
+            messages.success(request,'Thanks for registering the event')
             return HttpResponseRedirect('/event_registration')
+        else:
+            messages.error(request,'Please fill the form correctly')
     else:
         form=EventForm
+        
     return render(request,'event_registration.html',{'form':form})
 
 def participant_registration(request):
@@ -62,6 +67,9 @@ def participant_registration(request):
         participant=Participant(name=name,Contact_no=Contact_no,Email_ID=Email_ID,Event_name=Event_name,Registration_Type=Registration_Type,No_of_people=No_of_people)
         if Event_name == False:
             messages.error(request,"Please enter event name")
+            return HttpResponseRedirect('/participant_registration')
+        if Email_ID == "":
+            messages.error(request,"Please enter email Id")
             return HttpResponseRedirect('/participant_registration')
         if name == "":
             messages.error(request,"Please enter your name")
@@ -103,4 +111,26 @@ def participant_registration(request):
     return render(request,'participant_registration.html',{'list':list,'form':form})
 
 
-
+def event_dashboard(request):
+    success=False
+    if request.method=="POST":
+        form=EventDashboardform(request.POST)
+        Email_ID=request.POST['Email_ID']
+        password=request.POST['password']
+        flag=0
+        for item in Event.objects.all():
+            if item.email==Email_ID and item.password==password:
+                flag=1;
+                str=item.name
+            if flag==1:
+                success=True
+                list=Participant.objects.filter(Event_name=str)
+        if success==True:
+            return render(request,'event_dashboard.html',{'form':form,'list':list,'success':success}) 
+        else:
+            form=EventDashboardform
+            return render(request,'event_dashboard.html',{'form':form,'success':success}) 
+    else :
+        form=EventDashboardform
+        return render(request,'event_dashboard.html',{'form':form,'success':success})
+ 
