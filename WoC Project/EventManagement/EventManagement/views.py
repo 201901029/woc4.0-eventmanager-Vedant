@@ -19,28 +19,28 @@ def event_registration(request):
     if request.method=="POST":
         form=EventForm(request.POST)    
         if form.is_valid():
-           # thanks="Thankyou for registering an event"
-           # name=request.POST['name']
-           #email=request.POST['email']
-           # desc=request.POST['desc']
-           # From=request.POST['To']
-           # To=request.POST['From']
-           # Registration_Deadline=request.POST['Registration_Deadline']
-           # message = "%s\n Name: %s\n Email: %s\n Description: %s\n From: %s\n To: %s\n Registration_Deadline: %s\n" % (
-            #        thanks,
-             #       name , 
-              #      email,
-               #     desc,
-              #      From,
-             #       To,
-             #       Registration_Deadline)
+            thanks="Thankyou for registering an event"
+            name=request.POST['name']
+            email=request.POST['email']
+            desc=request.POST['desc']
+            From=request.POST['To']
+            To=request.POST['From']
+            Registration_Deadline=request.POST['Registration_Deadline']
+            message = "%s\n Name: %s\n Email: %s\n Description: %s\n From: %s\n To: %s\n Registration_Deadline: %s\n" % (
+                    thanks,
+                    name , 
+                    email,
+                    desc,
+                    From,
+                    To,
+                    Registration_Deadline)
             form.save()
-            #send_mail(
-             #   'Test',
-              #  message,
-              #  'vedantparikh421@gmail.com',
-              #  [email]
-            #)
+            send_mail(
+                'Test',
+                message,
+                'vedantparikh421@gmail.com',
+                [email]
+            )
             messages.success(request,'Thanks for registering the event')
             return HttpResponseRedirect('/event_registration')
         else:
@@ -129,6 +129,7 @@ def event_dashboard(request):
             return render(request,'event_dashboard.html',{'form':form,'list':list,'success':success}) 
         else:
             form=EventDashboardform
+            messages.error(request,'Email_ID or Password is wrong')
             return render(request,'event_dashboard.html',{'form':form,'success':success}) 
     else :
         form=EventDashboardform

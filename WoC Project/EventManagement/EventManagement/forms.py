@@ -22,7 +22,7 @@ class EventForm(ModelForm):
     def clean_name(self):
         name=self.cleaned_data.get('name')
         for item in Event.objects.all():
-          if item.name==name:
+          if item.name.lower()==name.lower():
             raise forms.ValidationError('Please Enter Different Event name')
         return name
     
@@ -46,16 +46,18 @@ class ParticipantForm(ModelForm):
         fields=("name","Contact_no","Email_ID","Registration_Type","No_of_people")
         widgets={
           "name": forms.TextInput(attrs={'class':'form-control','placeholder':'Name'}),
-         "Contact_no": forms.TextInput(attrs={'class':'form-control','placeholder':'Contact_no'}),
           "Email_ID": forms.EmailInput(attrs={'class':'form-control','placeholder':'Email_ID'}),
           "Registration_Type": forms.RadioSelect(),
         }
 
 class EventDashboardform(ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control','placeholder':'Password'}))
     class Meta:
       model=EventDashboard
       fields=("Email_ID","password")
+      widgets={
+          "Email_ID": forms.EmailInput(attrs={'class':'form-control','placeholder':'Email_ID'}),
+        }
 
         
   

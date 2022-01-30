@@ -74,10 +74,18 @@
       .main {
         display: flex;
       }
-      .form-group {
-        padding: 16px 32rem;
-      }
 
+      @media only screen and (max-width: 929px) {
+        .nav-list {
+          flex-direction: column;
+        }
+        .navbar {
+          justify-content: center;
+        }
+        .nav-list li a {
+          font-size: small;
+        }
+      }
       table,
       th,
       td {
@@ -99,7 +107,22 @@
         <li><a href="/event_dashboard">Event Dashboard</a></li>
       </ul>
     </nav>
-    {% if success %}
+    {% for message in messages %}
+    <div
+      class="alert alert-{{message.tags}} alert-dismissible fade show"
+      role="alert"
+    >
+      Message: {{message}}
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %} {% if success %}
     <div class="form-group">
       <form action="" method="POST">
         {% csrf_token %} {{ form.as_p }}
