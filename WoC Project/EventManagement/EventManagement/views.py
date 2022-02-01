@@ -20,28 +20,28 @@ def event_registration(request):
     if request.method=="POST":
         form=EventForm(request.POST)    
         if form.is_valid():
-            thanks="Thankyou for registering an event"
-            name=request.POST['name']
-            email=request.POST['email']
-            desc=request.POST['desc']
-            From=request.POST['To']
-            To=request.POST['From']
-            Registration_Deadline=request.POST['Registration_Deadline']
-            message = "%s\n Name: %s\n Email: %s\n Description: %s\n From: %s\n To: %s\n Registration_Deadline: %s\n" % (
-                    thanks,
-                    name , 
-                    email,
-                    desc,
-                    From,
-                    To,
-                    Registration_Deadline)
+         #   thanks="Thankyou for registering an event"
+          #  name=request.POST['name']
+           # email=request.POST['email']
+         #  desc=request.POST['desc']
+          #  From=request.POST['To']
+          #  To=request.POST['From']
+          #  Registration_Deadline=request.POST['Registration_Deadline']
+          #  message = "%s\n Name: %s\n Email: %s\n Description: %s\n From: %s\n To: %s\n Registration_Deadline: %s\n" % (
+          #          thanks,
+          #          name , 
+          #          email,
+          #          desc,
+          #          From,
+           #         To,
+           #         Registration_Deadline)
             form.save()
-            send_mail(
-                'Test',
-                message,
-                'vedantparikh421@gmail.com',
-                [email]
-            )
+           # send_mail(
+            #    'Test',
+            #    message,
+            #    'vedantparikh421@gmail.com',
+            #    [email]
+            #)
             messages.success(request,'Thanks for registering the event')
             return HttpResponseRedirect('/event_registration')
         else:
@@ -90,24 +90,24 @@ def participant_registration(request):
             return HttpResponseRedirect('/participant_registration')
         participant.save()
 
-        account_sid = 'AC5e7957d055a49d897da005172a5a9b60'
-        auth_token ='9dacedc3e0d34022cf136d6ca5b21187'
-        client = Client(account_sid, auth_token)
-        name=request.POST['name']
-        Contact_no=str(request.POST['Contact_no'])
-        Email_ID=request.POST['Email_ID']
-        Event_name=request.POST['Event_name']
-        message = "Name: %s\n Contact No: %s\n Email: %s\n Event Name: %s\n " % (
-                name , 
-                Contact_no,
-                Email_ID,
-                Event_name)
-        message = client.messages.create(
-                            body=message,
-                            from_='+16066033405',
-                            to=Contact_no
-                          )
-        print(message.sid)
+     #   account_sid = ''
+     #   auth_token =''
+     #   client = Client(account_sid, auth_token)
+     #  name=request.POST['name']
+     #   Contact_no=str(request.POST['Contact_no'])
+     #   Email_ID=request.POST['Email_ID']
+     #   Event_name=request.POST['Event_name']
+     #   message = "Name: %s\n Contact No: %s\n Email: %s\n Event Name: %s\n " % (
+      #          name , 
+      #          Contact_no,
+      #          Email_ID,
+      #          Event_name)
+       # message = client.messages.create(
+        #                    body=message,
+         #                   from_='',
+          #                  to=Contact_no
+      #                    )
+        #print(message.sid)
         messages.success(request,'Your Form Has been Submitted')
         return HttpResponseRedirect('/participant_registration')
     else:
