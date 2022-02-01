@@ -11,6 +11,7 @@ from .forms import ParticipantForm
 from .models import Participant
 from .forms  import EventDashboardform
 import datetime
+import time
 def index(request):
     context = {'name':'Vedant'}
     return render(request,'index.html',context)
@@ -54,6 +55,9 @@ def participant_registration(request):
     list=Event.objects.all()
     for item in list:
         if item.Registration_Deadline.replace(tzinfo=None)<datetime.datetime.now().replace(tzinfo=None):
+            for part in Participant.objects.all():
+                if part.Event_name==item.name:
+                    part.delete()
             item.delete()
     if request.method=="POST":
         flag=0
@@ -86,24 +90,24 @@ def participant_registration(request):
             return HttpResponseRedirect('/participant_registration')
         participant.save()
 
-            #account_sid = ''
-            #auth_token =''
-            #client = Client(account_sid, auth_token)
-            #name=request.POST['name']
-            #Contact_no=str(request.POST['Contact_no'])
-            #Email_ID=request.POST['Email_ID']
-            #Event_name=request.POST['Event_name']
-            #message = "Name: %s\n Contact No: %s\n Email: %s\n Event Name: %s\n " % (
-                    #name , 
-                    #Contact_no,
-                    #Email_ID,
-                    #Event_name)
-            #message = client.messages.create(
-                              #body=message,
-                              #from_='',
-                              #to=Contact_no
-                          #)
-            #print(message.sid)
+        account_sid = 'AC5e7957d055a49d897da005172a5a9b60'
+        auth_token ='9dacedc3e0d34022cf136d6ca5b21187'
+        client = Client(account_sid, auth_token)
+        name=request.POST['name']
+        Contact_no=str(request.POST['Contact_no'])
+        Email_ID=request.POST['Email_ID']
+        Event_name=request.POST['Event_name']
+        message = "Name: %s\n Contact No: %s\n Email: %s\n Event Name: %s\n " % (
+                name , 
+                Contact_no,
+                Email_ID,
+                Event_name)
+        message = client.messages.create(
+                            body=message,
+                            from_='+16066033405',
+                            to=Contact_no
+                          )
+        print(message.sid)
         messages.success(request,'Your Form Has been Submitted')
         return HttpResponseRedirect('/participant_registration')
     else:

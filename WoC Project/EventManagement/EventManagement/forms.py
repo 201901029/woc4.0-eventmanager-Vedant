@@ -48,6 +48,7 @@ class ParticipantForm(ModelForm):
           "name": forms.TextInput(attrs={'class':'form-control','placeholder':'Name'}),
           "Email_ID": forms.EmailInput(attrs={'class':'form-control','placeholder':'Email_ID'}),
           "Registration_Type": forms.RadioSelect(),
+          "Contact_no": forms.TextInput(attrs={'class':'form-control','placeholder':'Contact_no'}),
         }
 
 class EventDashboardform(ModelForm):
